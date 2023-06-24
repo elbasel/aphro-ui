@@ -5,10 +5,8 @@ const TestPage = () => {
   return (
     <ul>
       {paths.map((p) => (
-        <li>
-          <Link key={p} href={p}>
-            {p}
-          </Link>
+        <li key={p}>
+          <Link href={p}>{p}</Link>
         </li>
       ))}
     </ul>

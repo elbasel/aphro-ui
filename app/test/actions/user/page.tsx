@@ -10,8 +10,8 @@ const TestGetUser = async () => {
         Test <code>getUser</code>
       </h1>
       <p>Hello {name}!</p>
-      <p>Your email is "{email}"</p>
-      <p>Your image url is "{imageUrl}"</p>
+      <p>Your email is &quot;{email}&quot;</p>
+      <p>Your image url is &quot;{imageUrl}&quot;</p>
     </>
   );
 };
