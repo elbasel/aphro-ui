@@ -1,28 +1,60 @@
 "use client";
 
-import { type ReactNode } from "react";
+import {
+  type ReactNode,
+  useTransition,
+  useState,
+  useEffect,
+  useRef,
+  Ref,
+} from "react";
 import { twMerge } from "tailwind-merge";
+import { BsCircleHalf } from "react-icons/bs";
 
 interface Props {
-  action?: (formData: FormData) => Promise<any>;
+  action?: () => any;
   children?: ReactNode;
-  className?: string[];
+  classNames?: string[];
   type?: "button" | "submit" | "reset";
+  fallback?: ReactNode;
 }
 
 export const Button = ({
-  action = () => Promise.resolve(),
+  action = async () => Promise.resolve(),
   children,
-  className = [],
+  classNames = [],
   type = "submit",
+  fallback = <BsCircleHalf size={22} className="animate-spin" />,
 }: Props) => {
+  const [isPending, startTransition] = useTransition();
+  const [width, setWidth] = useState<number>();
+  const [height, setHeight] = useState<number>();
+
+  const buttonRef: Ref<HTMLButtonElement> = useRef(null);
+
+  useEffect(() => {
+    const buttonWidth = buttonRef.current?.clientWidth;
+    const buttonHeight = buttonRef.current?.clientHeight;
+    if (buttonWidth) setWidth(buttonWidth);
+    if (buttonHeight) setHeight(buttonHeight);
+  }, []);
+
   return (
     <>
-      <form onSubmit={(e) => e.preventDefault()} action={action}>
-        <button type={type} className={twMerge(...className)}></button>;
-      </form>
+      <button
+        disabled={isPending}
+        style={{
+          minWidth: width,
+          minHeight: height,
+        }}
+        ref={buttonRef}
+        onClick={() => startTransition(() => action())}
+        type={type}
+        className={twMerge(...classNames)}
+      >
+        {isPending ? fallback : children}
+      </button>
     </>
   );
 };
 
-export default Button;

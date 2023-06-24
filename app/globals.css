@@ -2,23 +2,34 @@
 @tailwind components;
 @tailwind utilities;
 
-main {
-  @apply mx-auto max-w-4xl px-4 py-2 bg-black text-white min-h-screen;
+:root {
+  --bg-color: #000;
+  --text-color: #fff;
 }
 
-/* h1,
-h2 {
-  @apply text-center;
-} */
+main {
+  @apply min-h-screen px-4 py-2 mx-auto max-w-7xl;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+}
 
 h1 {
-  @apply text-3xl font-bold my-4;
+  @apply my-4 text-3xl font-bold;
 }
 
 h2 {
-  @apply text-lg font-semibold my-2;
+  @apply my-2 text-lg font-semibold;
 }
 
 p {
   @apply my-1;
+}
+
+button {
+  @apply flex items-center justify-center px-4 py-2 transition-all duration-200 border border-current rounded-lg text-inherit active:scale-95 disabled:cursor-not-allowed;
+}
+
+a {
+  @apply text-blue-400;
+  color: color-mix(in srgb, #60a5fa 100%, currentColor 20%);
 }
