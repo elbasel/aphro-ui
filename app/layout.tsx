@@ -1,18 +1,21 @@
 import "./globals.css";
-import { Inter } from "next/font/google";
+import { Fira_Mono } from "next/font/google";
 
-const inter = Inter({ subsets: ["latin"] });
+const fira = Fira_Mono({ subsets: ["latin"], weight: "500" });
 
-export const metadata = {  title: "AphroUI",
+export const metadata = {
+  title: "AphroUI",
   description: "React server components for user with NextJs",
 };
 
 const RootLayout = ({ children }: { children: React.ReactNode }) => {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body className={fira.className}>
+        <main>{children}</main>
+      </body>
     </html>
   );
 };
 
-export default RootLayout
+export default RootLayout;

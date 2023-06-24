@@ -1,3 +1,24 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+main {
+  @apply mx-auto max-w-4xl px-4 py-2 bg-black text-white min-h-screen;
+}
+
+/* h1,
+h2 {
+  @apply text-center;
+} */
+
+h1 {
+  @apply text-3xl font-bold my-4;
+}
+
+h2 {
+  @apply text-lg font-semibold my-2;
+}
+
+p {
+  @apply my-1;
+}
