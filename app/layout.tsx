@@ -1,5 +1,6 @@
 import "./globals.css";
 import { Fira_Mono } from "next/font/google";
+import { LocalStorageProvider } from "./ui/local-value/LocalStorageProvider";
 
 const fira = Fira_Mono({ subsets: ["latin"], weight: "500" });
 
@@ -12,7 +13,9 @@ const RootLayout = ({ children }: { children: React.ReactNode }) => {
   return (
     <html lang="en">
       <body className={fira.className}>
-        <main>{children}</main>
+        <main>
+          <LocalStorageProvider>{children}</LocalStorageProvider>
+        </main>
       </body>
     </html>
   );

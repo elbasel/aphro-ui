@@ -1,2 +1,2 @@
-export type LocalStorageKey = "defaultKey" | "user" | "testKey";
+export type LocalStorageKey = "defaultKey" | "user" | "testKey" | "globalState";
 
