@@ -14,6 +14,7 @@ export const LocalValue = ({ itemKey, fallback = "loading" }: Props) => {
   const key = itemKey as keyof typeof allValues;
 
   const value = allValues[key];
-  if (!value) return fallback;
+  if (value === undefined || value === null) return fallback;
+
   return <>{value}</>;
 };

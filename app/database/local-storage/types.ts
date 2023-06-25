@@ -1,5 +1,6 @@
 export type LocalStorageKey = "defaultKey" | "user" | "counter" | "globalState";
 
 export type GlobalState = {
-  counter?: number;
+  counter: number;
+  testKey: string;
 };

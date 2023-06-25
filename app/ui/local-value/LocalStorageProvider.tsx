@@ -14,10 +14,12 @@ interface Props {
   children?: React.ReactNode;
 }
 export const LocalStorageProvider = ({ children }: Props) => {
-  const [allValues, setAllValues] = useState({});
+  const [allValues, setAllValues] = useState<GlobalState>({
+    counter: 0,
+    testKey: "testValue",
+  });
 
-  const setValue = (itemKey: LocalStorageKey, itemValue: any) => {
-    const key = itemKey as keyof typeof allValues;
+  const setValue = (itemKey: keyof GlobalState, itemValue: any) => {
 
     const newGlobalSTate = { ...allValues, [itemKey]: itemValue };
     setAllValues(newGlobalSTate);
