@@ -8,7 +8,7 @@ const TestLocalStorage = () => {
   return (
     <>
       <h1>
-        Test <code>localStorage</code>
+        <code>[value, setValue] = useLocalStorage()</code>
       </h1>
       <section className="flex gap-4">
         <p className="flex items-center justify-center">

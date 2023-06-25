@@ -3,8 +3,8 @@
 import { getLocalValue } from "@/app/database/local-storage/getLocalValue";
 import { setLocalValue } from "@/app/database/local-storage/setLocalValue";
 import {
-  GlobalState,
-  LocalStorageKey,
+  type GlobalState,
+  type LocalStorageValue,
 } from "@/app/database/local-storage/types";
 import { createContext, useEffect, useState } from "react";
 
@@ -19,8 +19,10 @@ export const LocalStorageProvider = ({ children }: Props) => {
     testKey: "testValue",
   });
 
-  const setValue = (itemKey: keyof GlobalState, itemValue: any) => {
-
+  const setValue = (
+    itemKey: keyof GlobalState,
+    itemValue: LocalStorageValue
+  ) => {
     const newGlobalState = { ...globalState, [itemKey]: itemValue };
     setGlobalState(newGlobalState);
     setLocalValue("globalState", newGlobalState);

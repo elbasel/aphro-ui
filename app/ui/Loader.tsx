@@ -1,10 +1,15 @@
 import { BsCircleHalf } from "react-icons/bs";
-import { twMerge } from "tailwind-merge";
+import { type ClassNameValue, twMerge } from "tailwind-merge";
 
-export const Loader = ({ size = 22, classNames = [] }) => {
+interface Props {
+  size?: number;
+  classNames?: ClassNameValue[];
+}
+
+export const Loader = ({ size = 22, classNames = [] }: Props) => {
   return (
     <BsCircleHalf
-      size={22}
+      size={size}
       className={twMerge("duration-1000 animate-spin ease-linear", ...classNames)}
     />
   );

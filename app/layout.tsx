@@ -1,6 +1,7 @@
 import "./globals.css";
 import { Fira_Mono } from "next/font/google";
 import { LocalStorageProvider } from "./ui/local-value/LocalStorageProvider";
+import { FullScreenLoader } from "./ui/FullScreenLoader";
 
 const fira = Fira_Mono({ subsets: ["latin"], weight: "500" });
 
@@ -16,6 +17,7 @@ const RootLayout = ({ children }: { children: React.ReactNode }) => {
         <main>
           <LocalStorageProvider>{children}</LocalStorageProvider>
         </main>
+        <FullScreenLoader />
       </body>
     </html>
   );

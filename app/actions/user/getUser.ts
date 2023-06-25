@@ -1,7 +1,7 @@
 "use server";
 
-import { type AppUser } from "@/app/lib/user/type";
 import "server-only";
+import { type AppUser } from "@/app/lib/user/type";
 
 export const getUser = async (): Promise<AppUser> => {
   const appUser: AppUser = {

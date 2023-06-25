@@ -1,14 +1,18 @@
 "use client";
 
-import { LocalStorageKey } from "@/app/database/local-storage/types";
-import { useContext } from "react";
-import { LocalStorageContext } from "./LocalStorageProvider";
+import { type ReactNode, useContext } from "react";
 import { type ClassNameValue, twMerge } from "tailwind-merge";
+
+import {
+  type LocalStorageKey,
+  type LocalStorageValue,
+} from "@/app/database/local-storage/types";
+import { LocalStorageContext } from "./LocalStorageProvider";
 
 interface Props {
   itemKey: LocalStorageKey;
-  itemValue: number | string | [];
-  children?: React.ReactNode;
+  itemValue: LocalStorageValue;
+  children?: ReactNode;
   classNames?: ClassNameValue[];
 }
 

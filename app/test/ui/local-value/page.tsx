@@ -1,17 +1,12 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { BsCircleHalf } from "react-icons/bs";
-
 import { getLocalValue } from "@/app/database/local-storage/getLocalValue";
 import { GlobalState } from "@/app/database/local-storage/types";
 import { LocalValue } from "@/app/ui/local-value/LocalValue";
 import { SetLocalValueButton } from "@/app/ui/local-value/SetLocalValueButton";
-import { Loader } from "@/app/ui/Loader";
 
-interface Props {}
-
-const TestLocalValue = ({}: Props) => {
+const TestLocalValue = () => {
   const [counter, setCounter] = useState(0);
 
   useEffect(() => {

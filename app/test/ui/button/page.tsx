@@ -6,7 +6,7 @@ const TestButton = () => {
   return (
     <>
       <h1>
-        Test <code>{"<Button />"}</code>
+        <code>{"<Button />"}</code>
       </h1>
       <section className="space-y-4">
         <button>Plain Button</button>

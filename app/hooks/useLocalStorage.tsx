@@ -1,12 +1,10 @@
 "use client";
 
-import EventEmitter from "events";
+import "client-only"
 import { useEffect, useState } from "react";
 import { setLocalValue } from "../database/local-storage/setLocalValue";
 import { getLocalValue } from "../database/local-storage/getLocalValue";
 import { type LocalStorageKey } from "../database/local-storage/types";
-
-const emitter = new EventEmitter();
 
 export const useLocalStorage = <T,>(
   key: LocalStorageKey,
@@ -17,6 +15,7 @@ export const useLocalStorage = <T,>(
   useEffect(() => {
     const localValue: T | undefined = getLocalValue<T>(key);
     setValue(() => localValue ?? initialValue);
+    if (!localValue) setLocalValue(key, initialValue);
   }, []);
 
   const setValue = (func: (prev: T) => T) => {

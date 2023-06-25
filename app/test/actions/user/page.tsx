@@ -7,13 +7,9 @@ const TestGetUser = async () => {
   return (
     <>
       <h1 className="text-base">
-        <pre>
-          <code>
-            {"const { name, email, imageUrl }: AppUser = await getUser();"}
-          </code>
-        </pre>
+        <code>{"const user = await getUser();"}</code>
       </h1>
-      <p>Hello {name}!</p>
+      <p>Hello {name}</p>
       <p>Your email is &quot;{email}&quot;</p>
       <p>Your image url is &quot;{imageUrl}&quot;</p>
     </>
