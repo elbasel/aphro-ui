@@ -6,8 +6,12 @@ const TestGetUser = async () => {
 
   return (
     <>
-      <h1>
-        Test <code>getUser</code>
+      <h1 className="text-base">
+        <pre>
+          <code>
+            {"const { name, email, imageUrl }: AppUser = await getUser();"}
+          </code>
+        </pre>
       </h1>
       <p>Hello {name}!</p>
       <p>Your email is &quot;{email}&quot;</p>

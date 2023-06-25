@@ -7,8 +7,14 @@
   --text-color: #fff;
 }
 
+@layer utilities {
+  .app-scrollbar {
+    @apply scrollbar-thin scrollbar-thumb-blue-600 scrollbar-track-black scrollbar-corner-black scrollbar-track-rounded-lg scrollbar-thumb-rounded-lg scrollbar-corner-rounded-lg;
+  }
+}
+
 main {
-  @apply min-h-screen px-4 py-2 mx-auto max-w-7xl;
+  @apply min-h-screen !min-h-[100svh] px-4 py-2 mx-auto max-w-7xl flex flex-col;
   background-color: var(--bg-color);
   color: var(--text-color);
 }
@@ -18,7 +24,7 @@ h1 {
 }
 
 h2 {
-  @apply my-2 text-lg font-semibold;
+  @apply my-4 text-lg font-semibold;
 }
 
 p {

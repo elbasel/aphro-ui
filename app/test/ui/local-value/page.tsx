@@ -22,37 +22,29 @@ const TestLocalValue = ({}: Props) => {
 
   return (
     <>
-      <h1>
-        Test <code>LocalValue</code>
+      <h1 className="flex flex-col gap-4">
+        <code>{"<LocalValue itemKey='counter' />"}</code>
       </h1>
-      <p>
-        itemKey = <code>`counter`</code>
+      <p className="text-center text-7xl">
+        <LocalValue itemKey="counter" />{" "}
       </p>
-      <section className="">
-        <p>
-          Value: <LocalValue itemKey="counter" />{" "}
-        </p>
-        <div>
-          <h1>
-            <code>{"<LocalValue />"}</code> with <code>fallback</code>
-          </h1>
-          <p>
-            fallback = <code>{"<Loader /"}</code>
-          </p>
-          <p>
-            Value with fallback:
-            <LocalValue itemKey="counter" fallback={<Loader />} />
-          </p>
-        </div>
 
+      <section className="flex items-center justify-center flex-1 gap-4">
         <div onClick={() => setCounter((prev) => prev - 1)}>
-          <SetLocalValueButton itemKey="counter" itemValue={counter - 1}>
+          <SetLocalValueButton
+            classNames={["text-7xl"]}
+            itemKey="counter"
+            itemValue={counter - 1}
+          >
             -1
           </SetLocalValueButton>
         </div>
-
         <div onClick={() => setCounter((prev) => prev + 1)}>
-          <SetLocalValueButton itemKey="counter" itemValue={counter + 1}>
+          <SetLocalValueButton
+            classNames={["text-7xl"]}
+            itemKey="counter"
+            itemValue={counter + 1}
+          >
             +1
           </SetLocalValueButton>
         </div>
