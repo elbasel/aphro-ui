@@ -1,6 +1,7 @@
 "use client";
 
 import { getLocalValue } from "@/app/database/local-storage/getLocalValue";
+import { initialGlobalState } from "@/app/database/local-storage/initialGlobalState";
 import { setLocalValue } from "@/app/database/local-storage/setLocalValue";
 import {
   type GlobalState,
@@ -8,16 +9,17 @@ import {
 } from "@/app/database/local-storage/types";
 import { createContext, useEffect, useState } from "react";
 
-export const LocalStorageContext = createContext<[{}, any]>([{}, () => {}]);
+export const LocalStorageContext = createContext<[GlobalState, any]>([
+  initialGlobalState,
+  () => {},
+]);
 
 interface Props {
   children?: React.ReactNode;
 }
 export const LocalStorageProvider = ({ children }: Props) => {
-  const [globalState, setGlobalState] = useState<GlobalState>({
-    counter: 0,
-    testKey: "testValue",
-  });
+  const [globalState, setGlobalState] =
+    useState<GlobalState>(initialGlobalState);
 
   const setValue = (
     itemKey: keyof GlobalState,

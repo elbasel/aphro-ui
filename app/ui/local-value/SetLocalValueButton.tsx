@@ -4,13 +4,13 @@ import { type ReactNode, useContext } from "react";
 import { type ClassNameValue, twMerge } from "tailwind-merge";
 
 import {
-  type LocalStorageKey,
+  type GlobalState,
   type LocalStorageValue,
 } from "@/app/database/local-storage/types";
 import { LocalStorageContext } from "./LocalStorageProvider";
 
 interface Props {
-  itemKey: LocalStorageKey;
+  itemKey: keyof GlobalState;
   itemValue: LocalStorageValue;
   children?: ReactNode;
   classNames?: ClassNameValue[];
