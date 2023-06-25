@@ -2,14 +2,11 @@
 
 import { getLocalValue } from "@/app/database/local-storage/getLocalValue";
 import { setLocalValue } from "@/app/database/local-storage/setLocalValue";
-import { LocalStorageKey } from "@/app/database/local-storage/types";
 import {
-  Dispatch,
-  SetStateAction,
-  createContext,
-  useEffect,
-  useState,
-} from "react";
+  GlobalState,
+  LocalStorageKey,
+} from "@/app/database/local-storage/types";
+import { createContext, useEffect, useState } from "react";
 
 export const LocalStorageContext = createContext<[{}, any]>([{}, () => {}]);
 
@@ -19,14 +16,16 @@ interface Props {
 export const LocalStorageProvider = ({ children }: Props) => {
   const [allValues, setAllValues] = useState({});
 
-  const setValue = (key: LocalStorageKey, value: any) => {
-    const newGlobalSTate = { ...allValues, [key]: value };
+  const setValue = (itemKey: LocalStorageKey, itemValue: any) => {
+    const key = itemKey as keyof typeof allValues;
+
+    const newGlobalSTate = { ...allValues, [itemKey]: itemValue };
     setAllValues(newGlobalSTate);
     setLocalValue("globalState", newGlobalSTate);
   };
 
   useEffect(() => {
-    const storedGlobalState = getLocalValue<{}>("globalState");
+    const storedGlobalState = getLocalValue<GlobalState>("globalState");
     if (storedGlobalState) setAllValues(storedGlobalState);
     if (!storedGlobalState) setLocalValue("globalState", {});
   }, []);

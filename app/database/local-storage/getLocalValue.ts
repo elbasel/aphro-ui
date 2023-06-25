@@ -6,6 +6,7 @@ export const getLocalValue = <T>(itemKey: LocalStorageKey): T | undefined => {
     const itemValue: T = JSON.parse(localStorage.getItem(itemKey) ?? "");
     return itemValue;
   } catch (error: any) {
-    console.log(error);
+    console.log("error trying to get value of : " + `${itemKey}`, error);
+    console.groupCollapsed(error)
   }
 };

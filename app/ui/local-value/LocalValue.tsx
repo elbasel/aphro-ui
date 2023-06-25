@@ -6,16 +6,14 @@ import { LocalStorageContext } from "./LocalStorageProvider";
 
 interface Props {
   itemKey: LocalStorageKey;
+  fallback?: React.ReactNode;
 }
 
-export const LocalValue = ({ itemKey }: Props) => {
-  const [allValues, setValue] = useContext(LocalStorageContext);
+export const LocalValue = ({ itemKey, fallback = "loading" }: Props) => {
+  const [allValues] = useContext(LocalStorageContext);
   const key = itemKey as keyof typeof allValues;
 
-  return (
-    <>
-      {allValues[key]}
-      <button onClick={() => setValue(key, "100")}>Set to 100</button>
-    </>
-  );
+  const value = allValues[key];
+  if (!value) return fallback;
+  return <>{value}</>;
 };
